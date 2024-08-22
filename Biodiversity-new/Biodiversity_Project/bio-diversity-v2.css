@@ -393,14 +393,21 @@
   display: none;
   max-width: 100%;
 }
-.enter-your-country,
-.india {
   position: relative;
   text-transform: capitalize;
 }
 .enter-your-country {
   font-weight: 200;
   z-index: 1;
+  position: relative;
+  text-transform: capitalize;
+}
+select{
+  width: 100%;
+  padding: 1em;
+  border-radius: 50px;
+  border: none;
+  margin-bottom: 2em;
 }
 .india {
   font-size: var(--font-size-sm-8);
@@ -515,6 +522,24 @@
 .wrapper:hover {
   background-color: var(--color-darkcyan);
 }
+.placeholder-pair{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-lg-7) var(--padding-xs);
+  background-color: var(--color-teal);
+  flex: 1;
+  border-radius: 55.19px;
+  flex-direction: row;
+  white-space: nowrap;
+  z-index: 1;
+}
+.placeholder-pair:hover{
+  background-color: var(--color-darkcyan);
+}
+
 .currency-symbol,
 .placeholder-amount {
   flex-direction: column;
@@ -542,7 +567,7 @@
   box-sizing: border-box;
 }
 .proceed {
-  width: 105.7px;
+  width: 705.7px;
   position: relative;
   text-transform: capitalize;
   font-weight: 500;
@@ -555,7 +580,7 @@
   cursor: pointer;
   border: 0;
   padding: 24.7px var(--padding-xl);
-  background-color: var(--color-seagreen-100);
+  background-color: #379777;
   align-self: stretch;
   border-radius: 55.19px;
   display: flex;
