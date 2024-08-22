@@ -172,13 +172,9 @@
         <div class="enter-your-country">Enter the amount</div>
         <div class="amount-input">
           <div class="currency-symbol">
-            <div class="rupee-symbol">
-              <div class="div">
-                <span>₹ </span>
-                <span class="span">________________</span>
-              </div>
-            </div>
-            <div class="placeholder-amount">
+            <div class="rupee-symbol"></div>
+            <div class="placeholder-amount" id="optionSelect">
+              <textarea id="textArea" readonly></textarea>
               <div class="placeholder-digits">
                 <div class="placeholder-pair">
                   <div class="div1">₹ 5,000</div>
@@ -194,6 +190,24 @@
                 <button class="wrapper">
                   <div class="div3">₹ 35,000</div>
                 </button>
+              </div>
+              <div>
+                <style>
+                  #textArea {
+                      background-color: #379777;
+                      color: #ffffff;
+                      border: 1px solid #379777;
+                      padding: 10px;
+                      resize: none;
+                      margin-right: -100%;
+                  }
+                </style>
+                <script>
+                  document.getElementById('optionSelect').addEventListener('change', function() {
+                      var selectedOption = this.value; 
+                      document.getElementById('textArea').value = selectedOption;
+                  });
+                </script>
               </div>
             </div>
           </div>
