@@ -154,19 +154,21 @@
           src="./public/group-1000005086.svg"
         />
       </div>
+      <div class="donations1">Donations</div>
       <div class="rectangle-parent">
         <div class="frame-inner"></div>
-        <div class="enter-your-country">Enter Your Country</div>
-        <button class="country-dropdown">
-          <div class="india">India</div>
-          <div class="dropdown-icon">
-            <img
-              class="mingcutedown-fill-icon"
-              alt=""
-              src="./public/mingcutedownfill.svg"
-            />
-          </div>
-        </button>
+        <div class="enter-your-country">
+          <label>Enter Your Country</label>
+          <br>
+          <br>
+          <select id="country" name="country" style="font-size: 18px; color: white; background-color: #379777;">
+            <option value="India" style="color: white; text-align: left;">India</option>
+            <option value="USA" style="color: white; text-align: left;">USA</option>
+            <option value="Sri Lanka" style="color: white; text-align: left;">Sri Lanka</option>
+            <option value="France" style="color: white; text-align: left;">France</option>
+            <option value="China" style="color: white; text-align: left;">China</option>
+          </select>
+        </div>
         <div class="enter-your-country">Enter the amount</div>
         <div class="amount-input">
           <div class="currency-symbol">
@@ -196,11 +198,7 @@
             </div>
           </div>
         </div>
-        <button class="proceed-button">
-          <div class="proceed">Proceed</div>
-        </button>
-      </div>
-      <div class="donations1">Donations</div>
+        <button class="proceed-button" type="submit" style="font-size: 16px; color: white" class="proceed">Proceed</button>
     </div>
 
     <script>
