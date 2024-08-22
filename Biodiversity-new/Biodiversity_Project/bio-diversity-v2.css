@@ -409,15 +409,6 @@ select{
   border: none;
   margin-bottom: 2em;
 }
-.india {
-  font-size: var(--font-size-sm-8);
-  font-weight: 500;
-  font-family: var(--font-inter);
-  color: var(--color-white);
-  text-align: left;
-  display: inline-block;
-  min-width: 32px;
-}
 .mingcutedown-fill-icon {
   width: 11.7px;
   height: 11.7px;
@@ -443,9 +434,11 @@ select{
   gap: 2.3px;
   z-index: 1;
 }
-.span {
+/* .span {
   color: rgba(255, 255, 255, 0.4);
-}
+  background-color: #215E4A;
+  ;
+} */
 .div {
   width: 105.7px;
   position: relative;
@@ -454,7 +447,7 @@ select{
   display: inline-block;
   flex-shrink: 0;
 }
-.rupee-symbol {
+/* .rupee-symbol {
   align-self: stretch;
   border-radius: 55.19px;
   background-color: var(--color-darkslategray-200);
@@ -465,7 +458,7 @@ select{
   padding: 24.8px var(--padding-xl) 24.6px;
   white-space: nowrap;
   z-index: 1;
-}
+} */
 .div1 {
   flex: 1;
   position: relative;
@@ -501,7 +494,7 @@ select{
   color: var(--color-white);
   text-align: center;
 }
-.currency-symbol,
+
 .placeholder-amount,
 .wrapper {
   display: flex;
