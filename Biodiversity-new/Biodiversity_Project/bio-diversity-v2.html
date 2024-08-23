@@ -173,23 +173,23 @@
         <div class="amount-input">
           <div class="currency-symbol">
             <div class="rupee-symbol"></div>
-            <div class="placeholder-amount" id="optionSelect">
-              <textarea id="textArea" readonly></textarea>
+            <textarea id="textArea" readonly></textarea>
+            <select class="placeholder-amount" id="optionSelect">
               <div class="placeholder-digits">
                 <div class="placeholder-pair">
-                  <div class="div1">₹ 5,000</div>
+                  <option class="div1">₹ 5,000</option>
                 </div>
                 <div class="placeholder-pair">
-                  <div class="div1">₹ 15,000</div>
+                  <option class="div1">₹ 15,000</option>
                 </div>
               </div>
               <div class="placeholder-digits">
-                <button class="wrapper">
-                  <div class="div3">₹ 25,000</div>
+                <div class="wrapper">
+                  <option class="div3">₹ 25,000</option>
                 </button>
-                <button class="wrapper">
-                  <div class="div3">₹ 35,000</div>
-                </button>
+                <div class="wrapper">
+                  <option class="div3">₹ 35,000</option>
+                </div>
               </div>
               <div>
                 <style>
@@ -202,12 +202,6 @@
                       margin-right: -100%;
                   }
                 </style>
-                <script>
-                  document.getElementById('optionSelect').addEventListener('change', function() {
-                      var selectedOption = this.value; 
-                      document.getElementById('textArea').value = selectedOption;
-                  });
-                </script>
               </div>
             </div>
           </div>
@@ -216,6 +210,11 @@
     </div>
 
     <script>
+    document.getElementById('optionSelect').addEventListener('change', function() {
+      var selectedOption = this.value; 
+      document.getElementById('textArea').value = selectedOption; 
+    });
+
       var homeButton = document.getElementById("homeButton");
       if (homeButton) {
         homeButton.addEventListener("click", function (e) {
