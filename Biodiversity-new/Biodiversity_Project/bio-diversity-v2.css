@@ -182,7 +182,7 @@
 }
 .riddhi-jain-riddhijain1402g-container {
   height: 40px;
-  position: relative;
+  positio;
   line-height: 158%;
   display: inline-block;
 }
@@ -393,9 +393,6 @@
   display: none;
   max-width: 100%;
 }
-  position: relative;
-  text-transform: capitalize;
-}
 .enter-your-country {
   font-weight: 200;
   z-index: 1;
@@ -460,43 +457,48 @@ select{
   z-index: 1;
 } */
 .div1 {
+  background-color: #379777;
   flex: 1;
   position: relative;
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: large;
 }
+
 .placeholder-digits,
 .placeholder-pair {
+  background-color: #379777;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
 }
 .placeholder-pair {
+  background-color: #379777;
   flex: 1;
   border-radius: 55.19px;
-  background-color: var(--color-teal);
+  /*   */
   padding: var(--padding-lg-6) var(--padding-xs) var(--padding-lg-8);
   white-space: nowrap;
   z-index: 1;
 }
 .placeholder-digits {
+  background-color: #379777;
   align-self: stretch;
   gap: var(--gap-7xs-1);
 }
 .div3 {
+  background-color: #379777;
   flex: 1;
   position: relative;
-  font-size: var(--font-size-2xs-1);
   text-transform: capitalize;
-  font-weight: 500;
-  font-family: var(--font-inter);
-  color: var(--color-white);
-  text-align: center;
+  font-weight: 600;
+  font-size: large;
 }
 
 .placeholder-amount,
 .wrapper {
+  background-color: #379777;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -573,7 +575,7 @@ select{
   cursor: pointer;
   border: 0;
   padding: 24.7px var(--padding-xl);
-  background-color: #379777;
+  background-color: #ffffff;
   align-self: stretch;
   border-radius: 55.19px;
   display: flex;
@@ -596,6 +598,7 @@ select{
   border-radius: 27.54px;
   background-color: var(--color-seagreen-200);
   width: 434px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -605,6 +608,18 @@ select{
   gap: 24.1px;
   max-width: 100%;
   font-size: var(--font-size-mid-2);
+}
+.input-amount{
+  align-self: stretch;
+  border: var(--color-darkslategray-200);
+  border-radius: 55.19px;
+  background-color: var(--color-darkslategray-200);
+  display: flex;
+  width: 323px;
+  flex-direction: row;
+  /* align-items: flex-start; */
+  justify-content: center;
+  padding: 24.8px var(--padding-xl) 24.6px;
 }
 .donations1 {
   top: 114.7px;
