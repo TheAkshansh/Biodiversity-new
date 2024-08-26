@@ -1,125 +1,97 @@
-// document.getElementById('blogForm').addEventListener('submit', function(e) {
-//     e.preventDefault();  // Prevent form from submitting
+var blogForm = document.getElementById('blogForm');
+var titleInput = document.getElementById('title');
+var textInput = document.getElementById('text-input');
+var blogPosts = document.getElementById('blogPosts');
 
-// // Get the blog title and content from the form inputs
-//     const title = document.getElementById('title').value;
-//     const content = document.getElementById('content').value;
 
-// // Create a new blog post element
-//     const blogPost = document.createElement('div');
-//     blogPost.classList.add('blog-post');
+var boldButton = document.getElementById('bold');
+var italicButton = document.getElementById('italic');
+var underlineButton = document.getElementById('underline');
+var strikethroughButton = document.getElementById('strikethrough');
+var superscriptButton = document.getElementById('superscript');
+var subscriptButton = document.getElementById('subscript');
+var insertOrderedListButton = document.getElementById('insertOrderedList');
+var insertUnorderedListButton = document.getElementById('insertUnorderedList');
+var createLinkButton = document.getElementById('createLink');
+var formatBlockSelect = document.getElementById('formatBlock');
+var foreColorInput = document.getElementById('foreColor');
+var backColorInput = document.getElementById('backColor');
+var fileInput = document.getElementById('file');
 
-// // Add the title to the blog post
-//     const blogTitle = document.createElement('h3');
-//     blogTitle.textContent = title;
-//     blogPost.appendChild(blogTitle);
 
-// // Add the content to the blog post
-//     const blogContent = document.createElement('p');
-//     blogContent.textContent = content;
-//     blogPost.appendChild(blogContent);
-
-// // Append the new blog post to the blogPosts div
-//     document.getElementById('blogPosts').appendChild(blogPost);
-
-// // Clear the form inputs after submission
-//     document.getElementById('title').value = '';
-//     document.getElementById('content').value = '';
-// });
-
-document.getElementById('blogForm').addEventListener('submit', function(e) {
-  // Append the new blog post to the blogPosts div
-  document.getElementById('blogPosts').appendChild(blogPosts);
-
-  // Clear the form inputs after submission
-      document.getElementById('title').value = '';
-      document.getElementById('content').value = '';
-});
-
-// Get references to elements
-const blogForm = document.getElementById('blogForm');
-const titleInput = document.getElementById('title');
-const textInput = document.getElementById('text-input');
-const blogPosts = document.getElementById('blogPosts');
-
-// Formatting buttons
-const boldButton = document.getElementById('bold');
-const italicButton = document.getElementById('italic');
-const underlineButton = document.getElementById('underline');
-const strikethroughButton = document.getElementById('strikethrough');
-const superscriptButton = document.getElementById('superscript');
-const subscriptButton = document.getElementById('subscript');
-const insertOrderedListButton = document.getElementById('insertOrderedList');
-const insertUnorderedListButton = document.getElementById('insertUnorderedList');
-const createLinkButton = document.getElementById('createLink');
-const formatBlockSelect = document.getElementById('formatBlock');
-const fontNameSelect = document.getElementById('fontName');
-const fontSizeSelect = document.getElementById('fontSize');
-const foreColorInput = document.getElementById('foreColor');
-const backColorInput = document.getElementById('backColor');
-const fileInput = document.getElementById('file');
-
-// Add event listeners for formatting buttons
-boldButton.addEventListener('click', () => document.execCommand('bold'));
-italicButton.addEventListener('click', () => document.execCommand('italic'));
-underlineButton.addEventListener('click', () => document.execCommand('underline'));
-strikethroughButton.addEventListener('click', () => document.execCommand('strikethrough'));
-superscriptButton.addEventListener('click', () => document.execCommand('superscript'));
-subscriptButton.addEventListener('click', () => document.execCommand('subscript'));
-insertOrderedListButton.addEventListener('click', () => document.execCommand('insertOrderedList'));
-insertUnorderedListButton.addEventListener('click', () => document.execCommand('insertUnorderedList'));
-
-createLinkButton.addEventListener('click', () => {
-    const url = prompt("Enter the URL:");
-    if (url) {
-        document.execCommand('createLink', false, url);
-    }
-});
-
-formatBlockSelect.addEventListener('change', () => {
-    document.execCommand('formatBlock', false, formatBlockSelect.value);
-});
-
-fontNameSelect.addEventListener('change', () => {
-    document.execCommand('fontName', false, fontNameSelect.value);
-});
-
-fontSizeSelect.addEventListener('change', () => {
-    document.execCommand('fontSize', false, fontSizeSelect.value);
-});
-
-foreColorInput.addEventListener('input', () => {
-    document.execCommand('foreColor', false, foreColorInput.value);
-});
-
-backColorInput.addEventListener('input', () => {
-    document.execCommand('backcolor', false, backColorInput.value);
-});
-
-fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
+console.log(fileInput)
+fileInput.addEventListener('change', (e) => {
+    var file = e.target.files[0];
+    console.log(file)
     if (file) {
-        const reader = new FileReader();
+        var reader = new FileReader();
         reader.onload = (e) => {
-            const img = document.createElement('img');
+            var img = document.createElement('img');
             img.src = e.target.result;
             img.style.maxWidth = "100%";
+            img.alt = "Uploaded Image";
             textInput.appendChild(img);
         };
         reader.readAsDataURL(file);
     }
 });
 
+
+boldButton.addEventListener('click', () => execCommandReplacement()('bold'));
+italicButton.addEventListener('click', () => execCommandReplacement()('italic'));
+underlineButton.addEventListener('click', () => execCommandReplacement('underline'));
+strikethroughButton.addEventListener('click', () => execCommandReplacement('strikethrough'));
+superscriptButton.addEventListener('click', () => execCommandReplacement('superscript'));
+subscriptButton.addEventListener('click', () => execCommandReplacement('subscript'));
+insertOrderedListButton.addEventListener('click', () => execCommandReplacement('insertOrderedList'));
+insertUnorderedListButton.addEventListener('click', () => execCommandReplacement('insertUnorderedList'));
+createLinkButton.addEventListener('click', () => {
+    var url = prompt("Enter the URL:");
+    if (url) {
+        execCommandReplacement('createLink', false, url);
+    }
+});
+console.log(formatBlockSelect)
+// formatBlockSelect.addEventListener('change', () => {
+//     document.execCommand('formatBlock', false, formatBlockSelect.value);
+// });
+// fontNameSelect.addEventListener('change', () => {
+//     document.execCommand('fontName', false, fontNameSelect.value);
+// });
+
+document.getElementById('foreColor').addEventListener('input', function() {
+    applyStyleToSelection('color', this.value);
+});
+
+document.getElementById('backColor').addEventListener('input', function() {
+    applyStyleToSelection('background-color', this.value);
+});
+
+function applyStyleToSelection(styleName, value) {
+    let selectedText = window.getSelection();
+    if (selectedText.rangeCount) {
+        let range = selectedText.getRangeAt(0);
+        let span = document.createElement('span');
+        span.style[styleName] = value;
+        range.surroundContents(span);
+    }
+}
+// var input = document.getElementById('input');
+//         input.addEventListener('change', function(e) {
+//             console.log(e.target.files);
+//         });
+
+
 // Handle form submission
 blogForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const title = titleInput.value.trim();
-    const content = textInput.innerHTML.trim();
+    var title = titleInput.value.trim();
+    var content = textInput.innerHTML.trim();
 
     if (title && content) {
-        const blogPost = document.createElement('div');
-        blogPost.classList.add('blog-post');
+        const blogPosts = document.createElement('div');
+        blogPosts.classList.add('blogPosts');
         
         const blogTitle = document.createElement('h3');
         blogTitle.textContent = title;
@@ -127,10 +99,10 @@ blogForm.addEventListener('submit', (e) => {
         const blogContent = document.createElement('div');
         blogContent.innerHTML = content;
 
-        blogPost.appendChild(blogTitle);
-        blogPost.appendChild(blogContent);
+        blogPosts.appendChild(blogTitle);
+        blogPosts.appendChild(blogContent);
 
-        blogPosts.appendChild(blogPost);
+        blogPosts.appendChild(blogPosts);
 
         // Clear inputs
         titleInput.value = '';
@@ -140,18 +112,9 @@ blogForm.addEventListener('submit', (e) => {
     }
 });
 
-// Populate fontName and fontSize select options
-const fonts = ['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana'];
-fonts.forEach(font => {
-    const option = document.createElement('option');
-    option.value = font;
-    option.textContent = font;
-    fontNameSelect.appendChild(option);
-});
-
-const fontSizes = [1, 2, 3, 4, 5, 6, 7];
+var fontSizes = [1, 2, 3, 4, 5, 6, 7];
 fontSizes.forEach(size => {
-    const option = document.createElement('option');
+    var option = document.createElement('option');
     option.value = size;
     option.textContent = `Size ${size}`;
     fontSizeSelect.appendChild(option);
